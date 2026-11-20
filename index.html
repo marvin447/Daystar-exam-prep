@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172554">
+<meta name="description" content="Offline Daystar examination revision planner">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<title>Daystar Exam Prep</title>
+<style>
+:root{--navy:#172554;--blue:#2563eb;--bg:#f4f6fb;--card:#fff;--ink:#172033;--muted:#64748b;--line:#e2e8f0}
+*{box-sizing:border-box}body{margin:0;font:16px system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--navy);color:white;padding:22px 18px 18px}header h1{margin:0;font-size:1.35rem}header p{margin:6px 0 0;color:#dbeafe;font-size:.92rem}
+nav{display:flex;gap:8px;overflow:auto;padding:12px;background:white;position:sticky;top:0;z-index:2;border-bottom:1px solid var(--line)}
+nav button{border:0;background:#eef2ff;color:var(--navy);padding:10px 13px;border-radius:999px;font-weight:650;white-space:nowrap}
+nav button.active{background:var(--navy);color:white}
+main{max-width:850px;margin:auto;padding:16px}.panel{display:none}.panel.active{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:0 0 13px;box-shadow:0 2px 8px #0f172a08}
+h2{font-size:1.12rem;margin:0 0 12px}h3{font-size:1rem;margin:0 0 6px}
+.small{color:var(--muted);font-size:.88rem}.tag{display:inline-block;background:#eff6ff;color:#1d4ed8;border-radius:7px;padding:3px 8px;font-size:.78rem;font-weight:650}
+.progress{height:9px;background:#e2e8f0;border-radius:9px;overflow:hidden}.progress span{display:block;height:100%;background:#2563eb;width:0}
+.unit{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.unit:last-child{border:0}
+input[type=checkbox]{width:19px;height:19px;accent-color:#2563eb;margin-top:2px}
+.day{padding:12px 0;border-bottom:1px solid var(--line)}.day:last-child{border:0}.day strong{display:block;margin-bottom:5px}
+button.action{background:var(--blue);color:white;border:0;border-radius:10px;padding:11px 14px;font-weight:650}
+button.secondary{background:#e2e8f0;color:#172033;border:0;border-radius:10px;padding:10px 12px}
+textarea{width:100%;min-height:90px;border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit}
+input[type=date]{padding:9px;border:1px solid var(--line);border-radius:9px;font:inherit}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:24px}
+@media(min-width:650px){main{padding:24px}}
+</style>
+</head>
+<body>
+<header><h1>Daystar Exam Prep</h1><p>Your class-friendly revision planner · Exams begin 7 December 2026</p></header>
+<nav>
+<button class="active" data-tab="overview">Overview</button><button data-tab="classes">Classes</button><button data-tab="revision">Revision plan</button><button data-tab="tracker">Unit tracker</button><button data-tab="log">Study log</button>
+</nav>
+<main>
+<section id="overview" class="panel active">
+<div class="card"><h2>Welcome back</h2><p>Use flexible evening study blocks and adjust them around your classes. Aim for 3–4 focused hours when your day allows.</p><span class="tag">Best focus: Evening</span></div>
+<div class="card"><h2>Today's flexible study routine</h2><p><b>Block 1 · 60–90 min:</b> Understand one topic using lecture notes.</p><p><b>Block 2 · 45–60 min:</b> Make short notes, definitions and examples.</p><p><b>Block 3 · 45–60 min:</b> Test yourself with active recall and exam questions.</p><p class="small">Suggested window: 6:30–10:00 PM. Move blocks when your day is unpredictable.</p></div>
+<div class="card"><h2>Revision progress</h2><div class="progress"><span id="overallBar"></span></div><p id="overallText" class="small">0 of 6 units marked as revised</p></div>
+<div class="card"><h2>Study method</h2><p>Prioritise active recall: close your notes, explain the concept aloud, write what you remember, then check gaps. Finish each session with 3–5 exam-style questions.</p></div>
+</section>
+<section id="classes" class="panel">
+<div class="card"><h2>Your weekly class timetable</h2>
+<div class="day"><strong>Monday</strong>EDU-224 · 2:10 PM–5:10 PM</div>
+<div class="day"><strong>Tuesday</strong>EDU-225 · 10:00 AM–1:00 PM</div>
+<div class="day"><strong>Wednesday</strong>KIS-213 · 2:10 PM–5:10 PM</div>
+<div class="day"><strong>Thursday</strong>ACS-211 · 10:00 AM–1:00 PM<br>ACS-251 · 1:30 PM–4:30 PM</div>
+<div class="day"><strong>Friday</strong>ENG-112 · 8:00 AM–11:00 AM</div>
+<p class="small">Use lighter revision after long class days. Confirm any timetable changes with your lecturers.</p></div>
+</section>
+<section id="revision" class="panel">
+<div class="card"><h2>Revision calendar</h2><p class="small">A flexible topic rotation. Adjust the topic if classwork or assignments take priority.</p>
+<div class="day"><strong>Nov 20</strong>ACS 211 — Algorithms, characteristics and complexity</div>
+<div class="day"><strong>Nov 21</strong>EDU 224 — Core concepts and lecture-note review</div>
+<div class="day"><strong>Nov 22</strong>EDU 225 — Curriculum foundations and models</div>
+<div class="day"><strong>Nov 23</strong>ENG 112 — Grammar and writing skills</div>
+<div class="day"><strong>Nov 24</strong>KISW 213 — Introduction to literary criticism</div>
+<div class="day"><strong>Nov 25</strong>ACS 251 — Network fundamentals</div>
+<div class="day"><strong>Nov 26</strong>All units — Diagnostic questions and weak areas</div>
+<div class="day"><strong>Nov 27</strong>ACS 211 — Searching, sorting and data structures</div>
+<div class="day"><strong>Nov 28</strong>EDU 224 — Concepts and applications</div>
+<div class="day"><strong>Nov 29</strong>EDU 225 — Curriculum development processes</div>
+<div class="day"><strong>Nov 30</strong>ENG 112 — Writing formats and exam practice</div>
+<div class="day"><strong>Dec 1</strong>KISW 213 — Literary theories and applications</div>
+<div class="day"><strong>Dec 2</strong>ACS 251 — Devices, protocols and topologies</div>
+<div class="day"><strong>Dec 3</strong>ACS 211 + EDU 224 — Mock tests</div>
+<div class="day"><strong>Dec 4</strong>EDU 225 + ENG 112 — Mock tests</div>
+<div class="day"><strong>Dec 5</strong>KISW 213 + ACS 251 — Practice questions</div>
+<div class="day"><strong>Dec 6</strong>All units — Light review, prepare materials and rest</div>
+<p class="small">The examination order is not confirmed here. Follow the official university timetable.</p>
+</div></section>
+<section id="tracker" class="panel">
+<div class="card"><h2>Unit completion tracker</h2><p class="small">Tick a unit when you have completed a meaningful revision session.</p><div id="units"></div></div>
+</section>
+<section id="log" class="panel">
+<div class="card"><h2>Daily study log</h2><label for="studyDate">Date</label><br><input id="studyDate" type="date"><p><label for="done">What did you revise?</label></p><textarea id="done" placeholder="Topics, examples and questions attempted..."></textarea><p><label for="next">What needs more attention next time?</label></p><textarea id="next" placeholder="Write down gaps to revisit..."></textarea><p><button class="action" id="saveLog">Save study log</button></p><p id="saved" class="small" aria-live="polite"></p></div>
+</section>
+</main><footer>Your progress is saved on this device. Avoid clearing browser site data if you want to keep it.</footer>
+<script>
+const units=['ACS 211 — Algorithms and Data Structures','ACS 251 — Computer Networks and Data Communication','EDU 224','EDU 225 — Curriculum Development','ENG 112 — Advanced Writing','KISW 213 — Nadharia za Fasihi'];
+const key='daystarExamPrepV1';
+let state=JSON.parse(localStorage.getItem(key)||'{}');
+function save(){localStorage.setItem(key,JSON.stringify(state));render()}
+function render(){const root=document.getElementById('units');root.innerHTML='';units.forEach((u,i)=>{const row=document.createElement('label');row.className='unit';const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!(state.units&&state.units[i]);cb.addEventListener('change',()=>{state.units=state.units||{};state.units[i]=cb.checked;save()});const span=document.createElement('span');span.textContent=u;row.append(cb,span);root.append(row)});const n=units.filter((_,i)=>state.units&&state.units[i]).length;document.getElementById('overallBar').style.width=(n/6*100)+'%';document.getElementById('overallText').textContent=n+' of 6 units marked as revised'}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('nav button,.panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.tab).classList.add('active')}));
+const date=document.getElementById('studyDate');date.value=new Date().toISOString().slice(0,10);
+function loadLog(){const l=(state.logs||{})[date.value]||{};document.getElementById('done').value=l.done||'';document.getElementById('next').value=l.next||''}
+date.addEventListener('change',loadLog);document.getElementById('saveLog').addEventListener('click',()=>{state.logs=state.logs||{};state.logs[date.value]={done:document.getElementById('done').value,next:document.getElementById('next').value};localStorage.setItem(key,JSON.stringify(state));document.getElementById('saved').textContent='Saved on this device.'});
+render();loadLog();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
+</script>
+</body></html>
